@@ -1,3 +1,14 @@
+Usage
+
+Compile
+```
+mvn clean install
+```
+Run
+```
+java -jar TextToXmlConverter.jar <inputFile> <outputFile>
+```
+
 Change Java Version
 
 The fastest and most reliable way to switch between installed Java versions is with the update-alternatives command. It manages symbolic links for common commands, making it easy to change which executable a command points to.
