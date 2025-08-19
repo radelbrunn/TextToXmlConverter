@@ -54,7 +54,7 @@ public class TextToXmlConverter {
         InputFileValidator inputFileValidator = new InputFileValidator();
         boolean isValidFile = inputFileValidator.validateFile(inputFile);
         if (!isValidFile) {
-            String userChoice = getYesOrNoFromUser();
+            String userChoice = getUserInput();
             if (userChoice.equals("yes")) {
                 System.out.println("Proceeding with generation...");
                 generateXML(inputFile, outputFile);
@@ -90,7 +90,7 @@ public class TextToXmlConverter {
         }
     }
 
-    public static String getYesOrNoFromUser() {
+    public static String getUserInput() {
         try (Scanner scanner = new Scanner(System.in)) {
             String userInput;
 
