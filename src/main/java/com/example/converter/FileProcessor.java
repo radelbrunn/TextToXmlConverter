@@ -1,4 +1,3 @@
-// src/main/java/com/example/converter/FileProcessor.java
 package com.example.converter;
 
 import com.example.converter.parsers.LineParser;
@@ -12,7 +11,6 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.Stack;
 
@@ -34,23 +32,12 @@ public class FileProcessor {
      * @param outputStream The OutputStream to which the XML will be written.
      * @throws XMLStreamException If an error occurs during XML writer initialization.
      */
-    public FileProcessor(OutputStream outputStream) throws XMLStreamException, UnsupportedEncodingException {
+    public FileProcessor(OutputStream outputStream) throws XMLStreamException {
         XMLOutputFactory factory = XMLOutputFactory.newInstance();
-        // Create an OutputStreamWriter to explicitly handle UTF-8 encoding.
-        // This ensures the byte stream is correctly encoded before the XMLStreamWriter processes it.
         OutputStreamWriter writer = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
-
-        // Create an XMLStreamWriter from the Writer. When a Writer is provided,
-        // the encoding is handled by the Writer itself.
         this.xmlWriter = factory.createXMLStreamWriter(writer);
-
-        // Write the XML declaration. Since the encoding is handled by the OutputStreamWriter,
-        // we can use the method overload that only specifies the XML version.
-//        this.xmlWriter.writeStartDocument("1.0"); // Only XML version is needed here
         this.xmlWriter.writeStartDocument(StandardCharsets.UTF_8.name(), "1.0");
-        // Set the initial state for processing
         this.currentState = new InitialState();
-        // Initialize the stack to keep track of currently open XML elements
         this.elementStack = new Stack<>();
     }
     /**
@@ -87,17 +74,12 @@ public class FileProcessor {
      * @throws XMLStreamException If an XML writing error occurs during closing.
      */
     public void close() throws XMLStreamException {
-        // Close all remaining open elements in the stack.
-        // This will close elements like 'person' and finally the root 'people' element.
         while (!elementStack.isEmpty()) {
             xmlWriter.writeEndElement();
             elementStack.pop();
         }
-        // Write the end of the XML document
         xmlWriter.writeEndDocument();
-        // Flush any buffered output to the underlying stream
         xmlWriter.flush();
-        // Close the XML writer, releasing resources
         xmlWriter.close();
     }
 }

@@ -2,10 +2,6 @@ package com.example.converter.parsers;
 
 import com.example.converter.records.Record;
 
-/**
- * Strategy interface for parsing a line of text into a specific Record type.
- * This is part of the Strategy design pattern.
- */
 public interface LineParser {
     /**
      * Parses a single line of text into a Record object.

@@ -1,6 +1,5 @@
 package com.example.converter.parsers;
 
-
 import com.example.converter.records.PhoneRecord;
 import com.example.converter.records.Record;
 
@@ -10,11 +9,23 @@ import com.example.converter.records.Record;
 public class PhoneLineParser implements LineParser {
     @Override
     public Record parse(String line) throws IllegalArgumentException {
-        // Split by '|' character, limit to 3 parts (T | phonenumber | landlinenumber)
+        // Split by '|' character (T | phonenumber | landlinenumber)
         String[] parts = line.split("\\|");
-        if (parts.length != 3 || !parts[0].equals("T")) {
-            throw new IllegalArgumentException("Invalid T record format: " + line);
+
+        String phonenumber = "";
+        String landlinenumber = "";
+
+        switch (parts.length - 1) {
+            case 1 -> phonenumber = parts[1];
+            case 2 -> {
+                phonenumber = parts[1];
+                landlinenumber = parts[2];
+            }
+            default -> System.out.println("default");
         }
-        return new PhoneRecord(parts[1].trim(), parts[2].trim());
+        if (parts.length != 3 || !parts[0].equals("T")) {
+            System.out.println("Invalid T record format: " + line);
+        }
+        return new PhoneRecord(phonenumber, landlinenumber);
     }
 }

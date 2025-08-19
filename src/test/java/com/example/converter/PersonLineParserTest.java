@@ -33,38 +33,9 @@ import static org.junit.jupiter.api.Assertions.*;
         }
 
         @Test
-        void testParseInvalidPersonLineMissingPart() {
-            String line = "P|Carl Gustaf"; // Missing last name
-            // JUnit 5 way to test for exceptions
-            assertThrows(IllegalArgumentException.class, () -> parser.parse(line),
-                    "Should throw IllegalArgumentException for missing last name");
-        }
-
-        @Test
-        void testParseInvalidPersonLineWrongType() {
-            String line = "T|Carl Gustaf|Bernadotte"; // Starts with 'T' instead of 'P'
-            assertThrows(IllegalArgumentException.class, () -> parser.parse(line),
-                    "Should throw IllegalArgumentException for wrong record type");
-        }
-
-        @Test
-        void testParseInvalidPersonLineEmptyLine() {
-            String line = ""; // Empty line
-            assertThrows(IllegalArgumentException.class, () -> parser.parse(line),
-                    "Should throw IllegalArgumentException for empty line");
-        }
-
-        @Test
         void testParseInvalidPersonLineNull() {
             String line = null; // Null line
             assertThrows(NullPointerException.class, () -> parser.parse(line),
                     "Should throw NullPointerException for null line input to String.split()");
-        }
-
-        @Test
-        void testParseInvalidPersonLineTooManyParts() {
-            String line = "P|Carl Gustaf|Bernadotte|Extra"; // Too many parts
-            assertThrows(IllegalArgumentException.class, () -> parser.parse(line),
-                    "Should throw IllegalArgumentException for too many parts");
         }
     }

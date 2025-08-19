@@ -1,4 +1,3 @@
-// src/main/java/com/example/converter/TextToXmlConverter.java
 package com.example.converter;
 
 import javax.xml.stream.XMLStreamException;
@@ -26,15 +25,13 @@ public class TextToXmlConverter {
      */
     public void convert(InputStream inputStream, OutputStream outputStream)
             throws IOException, XMLStreamException, IllegalArgumentException {
-        // Use BufferedReader for efficient line-by-line reading
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             FileProcessor processor = new FileProcessor(outputStream);
             String line;
-            // Read lines until the end of the stream
             while ((line = reader.readLine()) != null) {
-                processor.processLine(line); // Process each line using the FileProcessor
+                processor.processLine(line);
             }
-            processor.close(); // Ensure all XML elements are properly closed and writer is flushed/closed
+            processor.close();
         }
     }
 
@@ -71,10 +68,10 @@ public class TextToXmlConverter {
 
     private static void generateXML(String inputFile, String outputFile) {
         TextToXmlConverter converter = new TextToXmlConverter();
-        try (InputStream is = new FileInputStream(inputFile); // Open input file stream
-             OutputStream os = new FileOutputStream(outputFile)) { // Open output file stream
+        try (InputStream is = new FileInputStream(inputFile);
+             OutputStream os = new FileOutputStream(outputFile)) {
             System.out.println("Starting conversion from " + inputFile + " to " + outputFile);
-            converter.convert(is, os); // Perform the conversion
+            converter.convert(is, os);
             System.out.println("Conversion completed successfully.");
         } catch (FileNotFoundException e) {
             System.err.println("Error: File not found. Please check the file path. " + e.getMessage());
@@ -94,7 +91,6 @@ public class TextToXmlConverter {
     }
 
     public static String getYesOrNoFromUser() {
-        // The try-with-resources statement ensures the scanner is automatically closed
         try (Scanner scanner = new Scanner(System.in)) {
             String userInput;
 
@@ -103,9 +99,9 @@ public class TextToXmlConverter {
                 userInput = scanner.nextLine().trim().toLowerCase();
 
                 if (userInput.equals("yes")) {
-                    return "yes"; // Return "yes" and exit the loop/method
+                    return "yes";
                 } else if (userInput.equals("no")) {
-                    return "no"; // Return "no" and exit the loop/method
+                    return "no";
                 } else {
                     System.out.println("Invalid input. Please try again.");
                 }

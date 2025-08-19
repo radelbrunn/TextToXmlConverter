@@ -1,4 +1,3 @@
-// src/main/java/com/example/converter/states/InitialState.java
 package com.example.converter.states;
 
 import com.example.converter.records.PersonRecord;

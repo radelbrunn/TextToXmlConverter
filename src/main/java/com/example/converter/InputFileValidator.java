@@ -46,6 +46,7 @@ public class InputFileValidator {
                     isValid = false;
                 }
             }
+
             System.out.println("--------------------------------");
             System.out.println("File validation complete.");
             System.out.println(isValid ? "File is valid" : "File is not valid");

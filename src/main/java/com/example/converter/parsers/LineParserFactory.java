@@ -1,9 +1,5 @@
 package com.example.converter.parsers;
 
-/**
- * Factory for creating LineParser instances based on the record type.
- * This is part of the Factory Method design pattern.
- */
 public class LineParserFactory {
     /**
      * Returns the appropriate LineParser for a given record type.

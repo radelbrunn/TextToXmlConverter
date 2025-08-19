@@ -1,27 +1,27 @@
 package com.example.converter;
 
-import org.junit.jupiter.api.BeforeEach; // JUnit 5 @BeforeEach
-import org.junit.jupiter.api.Test;    // JUnit 5 @Test
-import org.junit.jupiter.api.io.TempDir; // JUnit 5 @TempDir for temporary directories
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
-import static org.junit.jupiter.api.Assertions.*; // JUnit 5 assertions
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path; // Import Path for @TempDir
+import java.nio.file.Path;
 
 /**
  * Integration tests for the TextToXmlConverter.
  * These tests ensure the end-to-end functionality, reading from an input stream
  * and writing to an output stream, and verifying the generated XML content.
  */
-class TextToXmlConverterIntegrationTest { // Class does not need to be public
+class TextToXmlConverterIntegrationTest {
 
     private TextToXmlConverter converter;
 
-    @TempDir // JUnit 5 way to get a temporary directory
-    Path tempDir; // tempDir will be injected by JUnit 5
+    @TempDir
+    Path tempDir;
 
     @BeforeEach
         // Use @BeforeEach for setup
@@ -36,11 +36,11 @@ class TextToXmlConverterIntegrationTest { // Class does not need to be public
                         "T|0768-101801|08-101801\n" +
                         "A|Drottningholms slott|Stockholm|10001\n" +
                         "F|Victoria|1977\n" +
-                        "A|Haga Slott|Stockholm|10002\n" + // Address for Victoria
+                        "A|Haga Slott|Stockholm|10002\n" +
                         "F|Carl Philip|1979\n" +
-                        "T|0768-101802|08-101802\n" + // Phone for Carl Philip
-                        "P|Daniel|Westling\n" + // New person
-                        "A|Kungliga slottet|Stockholm|10003"; // Address for Daniel
+                        "T|0768-101802|08-101802\n" +
+                        "P|Daniel|Westling\n" +
+                        "A|Kungliga slottet|Stockholm|10003";
 
         String expectedXml =
                 "<people>" +

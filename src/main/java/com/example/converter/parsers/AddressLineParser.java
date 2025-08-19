@@ -8,9 +8,9 @@ import com.example.converter.records.Record;
  */
 public class AddressLineParser implements LineParser {
     @Override
-    public Record parse(String line) throws IllegalArgumentException {
-        // Split by '|' character, limit to 4 parts (A | street | city | post number)
-        String[] parts = line.split("\\|", 4);
+    public Record parse(String line) {
+        // Split by '|' character (A | street | city | post number)
+        String[] parts = line.split("\\|");
 
         String street = "";
         String city = "";
@@ -18,7 +18,6 @@ public class AddressLineParser implements LineParser {
 
         switch (parts.length - 1) {
             case 1 -> street = parts[1];
-
             case 2 -> {
                 street = parts[1];
                 city = parts[2];
@@ -30,12 +29,10 @@ public class AddressLineParser implements LineParser {
             }
             default -> System.out.println("default");
         }
-//        System.out.println(street + ", " + city + ", " + postcode);
 
         if (parts.length != 4 || !parts[0].equals("A")) {
-//            throw new IllegalArgumentException("Invalid A record format: " + line);
+            System.out.println("Invalid A record format: " + line);
         }
-//        return new AddressRecord(parts[1].trim(), parts[2].trim(), parts[3].trim());
         return new AddressRecord(street, city, postcode);
     }
 }

@@ -9,11 +9,24 @@ import com.example.converter.records.Record;
 public class FamilyLineParser implements LineParser {
     @Override
     public Record parse(String line) throws IllegalArgumentException {
-        // Split by '|' character, limit to 3 parts (F | name | year of birth)
+        // Split by '|' character (F | name | year of birth)
         String[] parts = line.split("\\|");
-        if (parts.length != 3 || !parts[0].equals("F")) {
-            throw new IllegalArgumentException("Invalid F record format: " + line);
+
+        String name = "";
+        String yearOfBirth = "";
+
+        switch (parts.length - 1) {
+            case 1 -> name = parts[1];
+            case 2 -> {
+                name = parts[1];
+                yearOfBirth = parts[2];
+            }
+            default -> System.out.println("default");
         }
-        return new FamilyRecord(parts[1].trim(), parts[2].trim());
+
+        if (parts.length != 3 || !parts[0].equals("F")) {
+            System.out.println("Invalid F record format: " + line);
+        }
+        return new FamilyRecord(name, yearOfBirth);
     }
 }

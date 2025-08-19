@@ -1,6 +1,5 @@
 package com.example.converter.parsers;
 
-
 import com.example.converter.records.PersonRecord;
 import com.example.converter.records.Record;
 
@@ -10,11 +9,24 @@ import com.example.converter.records.Record;
 public class PersonLineParser implements LineParser {
     @Override
     public Record parse(String line) throws IllegalArgumentException {
-        // Split by '|' character, limit to 3 parts (P | firstname | lastname)
+        // Split by '|' character (P | firstname | lastname)
         String[] parts = line.split("\\|");
-        if (parts.length != 3 || !parts[0].equals("P")) {
-            throw new IllegalArgumentException("Invalid P record format: " + line);
+
+        String firstname = "";
+        String lastname = "";
+
+        switch (parts.length - 1) {
+            case 1 -> firstname = parts[1];
+            case 2 -> {
+                firstname = parts[1];
+                lastname = parts[2];
+            }
+            default -> System.out.println("default");
         }
-        return new PersonRecord(parts[1].trim(), parts[2].trim());
+
+        if (parts.length != 3 || !parts[0].equals("P")) {
+            System.out.println("Invalid P record format: " + line);
+        }
+        return new PersonRecord(firstname, lastname);
     }
 }

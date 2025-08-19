@@ -66,7 +66,6 @@ import java.nio.charset.StandardCharsets;
             expectedXmlPart = expectedXmlPart.replaceAll("\\s+", "");
 
             // Assert that the actual XML contains the expected structured part.
-            // Using contains because there might be minor variations in whitespace that get removed.
             assertTrue(actualXml.contains(expectedXmlPart),
                     "Generated XML does not contain expected part.\nExpected: " + expectedXmlPart + "\nActual: " + actualXml);
         }
