@@ -34,22 +34,11 @@ public class FileProcessor {
      * @param outputStream The OutputStream to which the XML will be written.
      * @throws XMLStreamException If an error occurs during XML writer initialization.
      */
- /*   public FileProcessor(OutputStream outputStream) throws XMLStreamException {
-        XMLOutputFactory factory = XMLOutputFactory.newInstance();
-        // Create an XMLStreamWriter. The output will be UTF-8 encoded.
-        this.xmlWriter = factory.createXMLStreamWriter(outputStream, "UTF-8");
-        // Write the XML declaration at the very beginning of the document
-        this.xmlWriter.writeStartDocument("1.0", "UTF-8");
-        // Set the initial state for processing
-        this.currentState = new InitialState();
-        // Initialize the stack to keep track of currently open XML elements
-        this.elementStack = new Stack<>();
-    }*/
     public FileProcessor(OutputStream outputStream) throws XMLStreamException, UnsupportedEncodingException {
         XMLOutputFactory factory = XMLOutputFactory.newInstance();
         // Create an OutputStreamWriter to explicitly handle UTF-8 encoding.
         // This ensures the byte stream is correctly encoded before the XMLStreamWriter processes it.
-        OutputStreamWriter writer = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8.name());
+        OutputStreamWriter writer = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
 
         // Create an XMLStreamWriter from the Writer. When a Writer is provided,
         // the encoding is handled by the Writer itself.

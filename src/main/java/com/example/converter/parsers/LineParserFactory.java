@@ -12,17 +12,12 @@ public class LineParserFactory {
      * @throws IllegalArgumentException If the type is unknown or no parser is defined for it.
      */
     public static LineParser getParser(char type) throws IllegalArgumentException {
-        switch (type) {
-            case 'P':
-                return new PersonLineParser();
-            case 'T':
-                return new PhoneLineParser();
-            case 'A':
-                return new AddressLineParser();
-            case 'F':
-                return new FamilyLineParser();
-            default:
-                throw new IllegalArgumentException("Unknown record type: " + type);
-        }
+        return switch (type) {
+            case 'P' -> new PersonLineParser();
+            case 'T' -> new PhoneLineParser();
+            case 'A' -> new AddressLineParser();
+            case 'F' -> new FamilyLineParser();
+            default -> throw new IllegalArgumentException("Unknown record type: " + type);
+        };
     }
 }

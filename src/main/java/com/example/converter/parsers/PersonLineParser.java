@@ -11,7 +11,7 @@ public class PersonLineParser implements LineParser {
     @Override
     public Record parse(String line) throws IllegalArgumentException {
         // Split by '|' character, limit to 3 parts (P | firstname | lastname)
-        String[] parts = line.split("\\|", 3);
+        String[] parts = line.split("\\|");
         if (parts.length != 3 || !parts[0].equals("P")) {
             throw new IllegalArgumentException("Invalid P record format: " + line);
         }

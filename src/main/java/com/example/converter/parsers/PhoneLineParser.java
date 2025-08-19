@@ -11,7 +11,7 @@ public class PhoneLineParser implements LineParser {
     @Override
     public Record parse(String line) throws IllegalArgumentException {
         // Split by '|' character, limit to 3 parts (T | phonenumber | landlinenumber)
-        String[] parts = line.split("\\|", 3);
+        String[] parts = line.split("\\|");
         if (parts.length != 3 || !parts[0].equals("T")) {
             throw new IllegalArgumentException("Invalid T record format: " + line);
         }

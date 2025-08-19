@@ -3,9 +3,6 @@ package com.example.converter;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -48,7 +45,6 @@ public class TextToXmlConverter {
      * @param args Command-line arguments: [0] = inputFile, [1] = outputFile
      */
     public static void main(String[] args) throws IOException {
-
 
         if (args.length != 2) {
             System.out.println("Usage: java -jar TextToXmlConverter.jar <inputFile> <outputFile>");
