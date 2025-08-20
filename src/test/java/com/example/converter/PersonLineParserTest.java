@@ -12,11 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
      * Unit tests for the PersonLineParser.
      * Verifies correct parsing of 'P' type lines and handles invalid formats.
      */
-    class PersonLineParserTest { // Class does not need to be public
+    class PersonLineParserTest {
 
         private PersonLineParser parser;
 
-        @BeforeEach // Use @BeforeEach for JUnit 5 setup
+        @BeforeEach
         void setUp() { // Methods do not need to be public in JUnit 5
             parser = new PersonLineParser();
         }
@@ -34,7 +34,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
         @Test
         void testParseInvalidPersonLineNull() {
-            String line = null; // Null line
+            String line = null;
             assertThrows(NullPointerException.class, () -> parser.parse(line),
                     "Should throw NullPointerException for null line input to String.split()");
         }

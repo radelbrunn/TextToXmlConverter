@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.*; // JUnit 5 assertions
      * Unit tests for the LineParserFactory.
      * Verifies that the factory returns the correct parser instance for each record type.
      */
-    class LineParserFactoryTest { // Class does not need to be public
+    class LineParserFactoryTest {
 
         @Test
-        void testGetParserPerson() { // Methods do not need to be public in JUnit 5
+        void testGetParserPerson() {
             LineParser parser = LineParserFactory.getParser('P');
             assertNotNull(parser, "Parser for 'P' should not be null");
             assertTrue(parser instanceof PersonLineParser, "Parser for 'P' should be an instance of PersonLineParser");
@@ -39,7 +39,6 @@ import static org.junit.jupiter.api.Assertions.*; // JUnit 5 assertions
 
         @Test
         void testGetParserUnknownType() {
-            // JUnit 5 way to test for expected exceptions
             assertThrows(IllegalArgumentException.class, () -> LineParserFactory.getParser('X'),
                     "Should throw IllegalArgumentException for unknown record type 'X'");
         }

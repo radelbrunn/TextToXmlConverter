@@ -24,7 +24,6 @@ class TextToXmlConverterIntegrationTest {
     Path tempDir;
 
     @BeforeEach
-        // Use @BeforeEach for setup
     void setUp() { // Methods do not need to be public in JUnit 5
         converter = new TextToXmlConverter();
     }

@@ -1,25 +1,24 @@
 package com.example.converter;
 
-import org.junit.jupiter.api.Test; // JUnit 5 @Test
-import org.junit.jupiter.api.BeforeEach; // JUnit 5 @BeforeEach
-import static org.junit.jupiter.api.Assertions.*; // JUnit 5 assertions
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import javax.xml.stream.XMLStreamException;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 
     /**
      * Unit tests for the FileProcessor focusing on sequence validation and XML structure.
      * These tests verify the State Pattern logic for valid and invalid record sequences.
      */
-    class FileProcessorSequenceTest { // Class does not need to be public
+    class FileProcessorSequenceTest {
 
         private ByteArrayOutputStream outputStream;
         private FileProcessor processor;
 
-        @BeforeEach // Use @BeforeEach for JUnit 5 setup
-        void setUp() throws XMLStreamException, UnsupportedEncodingException { // Methods do not need to be public in JUnit 5
+        @BeforeEach
+        void setUp() throws XMLStreamException {
             outputStream = new ByteArrayOutputStream();
             processor = new FileProcessor(outputStream);
         }
