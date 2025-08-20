@@ -8,7 +8,7 @@ import java.util.Objects;
  */
 public class FamilyRecord implements Record {
     private final String name;
-    private final String yearOfBirth; // Stored as String as per example, could be int/LocalDate
+    private final String yearOfBirth;
 
     public FamilyRecord(String name, String yearOfBirth) {
         this.name = Objects.requireNonNull(name, "Name cannot be null");
