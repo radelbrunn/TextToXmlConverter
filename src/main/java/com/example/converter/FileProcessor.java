@@ -26,9 +26,6 @@ public class FileProcessor {
     private Stack<String> elementStack; // Manages the stack of open XML elements for correct nesting
 
     /**
-     * Constructs a new FileProcessor.
-     * Initializes the XMLStreamWriter and sets the initial processing state.
-     *
      * @param outputStream The OutputStream to which the XML will be written.
      * @throws XMLStreamException If an error occurs during XML writer initialization.
      */
@@ -41,11 +38,6 @@ public class FileProcessor {
         this.elementStack = new Stack<>();
     }
     /**
-     * Processes a single line from the input text file.
-     * It identifies the record type, gets the appropriate parser from the factory,
-     * parses the line into a Record object, and then delegates the processing
-     * to the current state.
-     *
      * @param line The line of text to process.
      * @throws XMLStreamException If an XML writing error occurs during state processing.
      * @throws IllegalArgumentException If the line format is invalid or the record type

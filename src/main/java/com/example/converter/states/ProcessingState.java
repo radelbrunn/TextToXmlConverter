@@ -8,8 +8,6 @@ import java.util.Stack;
 
 /**
  * Interface for defining the behavior of different processing states.
- * This is the core of the State design pattern, managing transitions
- * and XML writing logic based on the current context.
  */
 public interface ProcessingState {
     /**
